@@ -49,20 +49,15 @@ public class JTestAB {
                 if(p[i]>=t[i]){
                     count = count + p[i];
                     pC++;
-                    temp = p[i]-t[i];
-                    
-                    if(temp<diff){
-                        diff = temp;
-                    }
+                    temp = p[i]-t[i]; 
                 }else if(t[i]>p[i]){
                     count = count + t[i];
                     tC++;
-                    temp = t[i]-p[i];
-                    
-                    if(temp<diff){
+                    temp = t[i]-p[i]; 
+                }
+                if(temp<diff){
                         diff = temp;
                     }
-                }
                 
             }
             
