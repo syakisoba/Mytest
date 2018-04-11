@@ -41,52 +41,52 @@ public class JTestAB {
                 String progL1 = sc.next();
                 String storage="";
                 String read1 = sc.next();
-            if(readingLan==false && read1.equals("%TEMPLATE-START%")){
-                readingLan = true;
-                read1 = sc.next();
-                while(!read1.equals("%TEMPLATE-END%")){
-                    storage = storage +read1;
+                if(readingLan==false && read1.equals("%TEMPLATE-START%")){
+                    readingLan = true;
                     read1 = sc.next();
-                }
-                readingLan = false;
-                int n = storage.length();
-                if(n <2){
-                    sum = 0;
-                }else{
-                    int tempY=0, tempX=0;
-                    for(int k = 0; k<n;k++){
-                        if(storage.charAt(k)!=' '){
-                            for(int i = (y-1); i>=0; i--){
-                                for(int j =(x-1); j>=0; j--){
-                                    if(k==0 && storage.charAt(k)==keyb[i][j]){
-                                        tempY = i;
-                                        tempX = j;
-                                    }else if(k!=0 && storage.charAt(k)==keyb[i][j]){
-                                        tempY = Math.abs(tempY - i);
-                                        tempX = Math.abs(tempX - j);
+                    while(!read1.equals("%TEMPLATE-END%")){
+                        storage = storage +read1;
+                        read1 = sc.next();
+                    }
+                    readingLan = false;
+                    int n = storage.length();
+                    if(n <2){
+                        sum = 0;
+                    }else{
+                        int tempY=0, tempX=0;
+                        for(int k = 0; k<n;k++){
+                            if(storage.charAt(k)!=' '){
+                                for(int i = (y-1); i>=0; i--){
+                                    for(int j =(x-1); j>=0; j--){
+                                        if(k==0 && storage.charAt(k)==keyb[i][j]){
+                                            tempY = i;
+                                            tempX = j;
+                                        }else if(k!=0 && storage.charAt(k)==keyb[i][j]){
+                                            tempY = Math.abs(tempY - i);
+                                            tempX = Math.abs(tempX - j);
 
-                                        if(tempX>=tempY){
-                                            sum = sum + tempX;
-                                        }else{
-                                            sum = sum + tempY;
+                                            if(tempX>=tempY){
+                                                sum = sum + tempX;
+                                            }else{
+                                                sum = sum + tempY;
+                                            }
+                                            tempY = i;
+                                            tempX = j;
+
                                         }
-                                        tempY = i;
-                                        tempX = j;
 
                                     }
-                                    
                                 }
-                            }
-                        }                        
+                            }                        
 
+                        }
                     }
+                    if(sum<minS){
+                        minS = sum;
+                        bestL = progL1;
+                    }
+
                 }
-                if(sum<minS){
-                    minS = sum;
-                    bestL = progL1;
-                }
-                
-            }
             }
             
             out.println(bestL+"\n"+minS);
